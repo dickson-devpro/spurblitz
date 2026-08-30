@@ -46,6 +46,7 @@
       "name": "<!-- unused -->",
       "enabled": false,
       "position": "head",
+      "paragraph": null,
       "pages": "article",
       "devices": "mobile",
       "code": "<!-- unused -->"
@@ -96,6 +97,6 @@
       "url": "/contact/"
     }
   ],
-  "adsTxt": "# Add your ad network line, e.g.\n# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0",
+  "adsTxt": "google.com, pub-2915197410886384, DIRECT, f08c47fec0942fa0",
   "disclosureText": "This guide is general information for employers, not legal advice. Immigration rules, fees and salary thresholds change frequently and apply differently to each business. Verify current requirements on the relevant government source and take advice from a qualified immigration solicitor or OISC-regulated adviser before acting."
 }
