@@ -1,7 +1,7 @@
 # Sveltia CMS configuration — token-based sign-in (no OAuth worker)
 backend:
   name: github
-  repo: dickson-devpro/abroad.thebureaunews.com
+  repo: dickson-devpro/spurblitz
   branch: main
 
 media_folder: src/assets/uploads
