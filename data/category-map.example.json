@@ -1,0 +1,7 @@
+{
+  "_comment": "Rename to category-map.json. Maps WordPress category slugs (or names) onto site categories. Run the migration with --dry first to see what categories exist in the export.",
+  "banking": { "category": "Tools", "categorySlug": "tools" },
+  "credit-cards": { "category": "Credit", "categorySlug": "credit" },
+  "home-loans": { "category": "Mortgage", "categorySlug": "mortgage" },
+  "personal-finance": { "category": "Tools", "categorySlug": "tools" }
+}

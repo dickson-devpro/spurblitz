@@ -1,0 +1,23 @@
+{#
+  adblocks.njk — renders site.adBlocks for a given insertion position.
+  Each block: { name, enabled, position, paragraph?, pages, devices, code }
+  Positions: head | body-open | before-title | before-content |
+             after-paragraph (uses `paragraph`, injected via the injectAds
+             filter, not this macro) | end-of-article | footer
+  Pages: all | article | home | category  (policy pages never render ads)
+  Devices: all | mobile | desktop — non-"all" blocks render inside a
+  <template> stamped client-side so the wrong device never even requests the ad.
+#}
+{% macro render(blocks, position, pageType, noAds) %}
+{%- if not noAds -%}
+{%- for b in blocks -%}
+{%- if b.enabled and b.position == position and (b.pages == "all" or b.pages == pageType) -%}
+{%- if b.devices and b.devices != "all" %}
+<template class="lb-ad-tpl" data-device="{{ b.devices }}">{{ b.code | safe }}</template>
+{%- else %}
+<div class="ad-block" data-ad-block="{{ b.name | slugify | default(loop.index) }}">{{ b.code | safe }}</div>
+{%- endif -%}
+{%- endif -%}
+{%- endfor -%}
+{%- endif -%}
+{% endmacro %}

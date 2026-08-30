@@ -1,0 +1,93 @@
+{% import "partials/adblocks.njk" as ads %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{{ ads.render(site.adBlocks, "head", pageType, noAds) }}
+<title>{{ title }} | {{ site.name }}</title>
+<meta name="description" content="{{ description }}">
+<link rel="canonical" href="{{ site.url }}{{ page.url }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap"></noscript>
+<link rel="stylesheet" href="/assets/site.css">
+{% block schema %}{% endblock %}
+</head>
+<body{% block bodyclass %}{% endblock %}>
+{{ ads.render(site.adBlocks, "body-open", pageType, noAds) }}
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="logo" href="/">{{ site.logoHtml | safe }}</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="siteNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav" id="siteNav" aria-label="Categories">
+      <button class="nav-close" id="navClose" aria-label="Close menu">&times;</button>
+      <span class="nav-title">Topics</span>
+      <a href="/">Home</a>
+      {% for cat in site.categories %}<a href="/{{ cat.slug }}/">{{ cat.name }}</a>{% endfor %}
+      <span class="nav-divider"></span>
+      {% for link in site.footerLinks %}<a class="nav-secondary" href="{{ link.url }}">{{ link.name }}</a>{% endfor %}
+    </nav>
+  </div>
+</header>
+<script>
+  (function () {
+    var t = document.getElementById('navToggle'),
+        n = document.getElementById('siteNav'),
+        c = document.getElementById('navClose');
+    if (!t || !n) return;
+    function close() {
+      n.classList.remove('is-open');
+      t.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    t.addEventListener('click', function () {
+      if (n.classList.contains('is-open')) return close();
+      n.classList.add('is-open');
+      t.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+    if (c) c.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+    n.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
+  })();
+</script>
+
+{% block content %}{{ content | safe }}{% endblock %}
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <span>© {{ site.year }} {{ site.name }}. All rights reserved.</span>
+    <nav aria-label="Policy pages">
+      {% for l in site.footerLinks %}<a href="{{ l.url }}">{{ l.name }}</a>{% endfor %}
+    </nav>
+  </div>
+</footer>
+
+{{ ads.render(site.adBlocks, "footer", pageType, noAds) }}
+<script>
+/* Device stamper: activates <template class="lb-ad-tpl"> blocks for the right device only */
+(function () {
+  var isMobile = window.innerWidth <= 768;
+  document.querySelectorAll("template.lb-ad-tpl").forEach(function (t) {
+    var d = t.getAttribute("data-device");
+    if ((d === "mobile" && !isMobile) || (d === "desktop" && isMobile)) { t.remove(); return; }
+    var frag = t.content.cloneNode(true);
+    frag.querySelectorAll("script").forEach(function (old) {
+      var s = document.createElement("script");
+      for (var i = 0; i < old.attributes.length; i++) s.setAttribute(old.attributes[i].name, old.attributes[i].value);
+      s.text = old.textContent;
+      old.parentNode.replaceChild(s, old);
+    });
+    t.parentNode.replaceChild(frag, t);
+  });
+})();
+</script>
+</body>
+</html>

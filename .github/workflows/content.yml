@@ -1,0 +1,51 @@
+name: Write keyword articles (manual batch)
+
+# MANUAL ONLY — no schedule. The generator skips keywords that already have an
+# article, so re-running resumes where the last run stopped.
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        description: "How many articles to write this run (33 covers the whole list)"
+        default: "33"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: content-batch
+  cancel-in-progress: false
+
+jobs:
+  batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Install dependencies
+        run: npm ci || npm install
+      - name: Sync with remote
+        run: |
+          git config user.name "content-bot"
+          git config user.email "content-bot@users.noreply.github.com"
+          git pull --no-rebase --no-edit || true
+      - name: Write articles
+        run: node scripts/generate-article.mjs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          COUNT: ${{ inputs.count }}
+      - name: Commit whatever was written
+        if: ${{ always() }}
+        run: |
+          git add -A
+          git diff --staged --quiet || git commit -m "content: batch $(date -u +%Y-%m-%d)"
+          git pull --no-rebase --no-edit || true
+          git push || true
+      - name: Summary
+        if: ${{ always() }}
+        run: |
+          echo "Articles now $(ls -1 src/articles/*.md 2>/dev/null | wc -l)"
+          echo "Re-run this workflow if the list is not finished — it resumes automatically."

@@ -1,0 +1,134 @@
+# Sveltia CMS configuration — token-based sign-in (no OAuth worker)
+backend:
+  name: github
+  repo: dickson-devpro/abroad.thebureaunews.com
+  branch: main
+
+media_folder: src/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  # ── Site Settings: scripts, ad codes, links ──────────────────────────
+  - name: settings
+    label: "Site Settings"
+    files:
+      - name: site
+        label: "Scripts, Ads & Links"
+        file: src/_data/site.json
+        fields:
+          - { name: name, label: "Site name", widget: string }
+          - { name: url, label: "Site URL (no trailing slash)", widget: string }
+          - { name: tagline, label: "Tagline", widget: string }
+          - { name: logoHtml, label: "Logo HTML", widget: string }
+          - { name: logoUrl, label: "Logo image URL (for schema)", widget: string }
+          - { name: year, label: "Copyright year", widget: string }
+          - name: adBlocks
+            label: "Ad & script blocks"
+            label_singular: "ad block"
+            widget: list
+            fields:
+              - { name: name, label: "Block name", widget: string, hint: "For your reference only — not shown on the site" }
+              - { name: enabled, label: Enabled, widget: boolean, default: false, hint: "Off = the block is not rendered at all" }
+              - name: position
+                label: Insertion
+                widget: select
+                options: [head, body-open, before-title, after-title, before-content, after-paragraph, end-of-article, footer]
+                default: before-title
+              - { name: paragraph, label: "Paragraph number", widget: number, required: false, value_type: int, hint: "Only used when Insertion is after-paragraph" }
+              - name: pages
+                label: Pages
+                widget: select
+                options: [all, article, home, category]
+                default: article
+              - name: devices
+                label: Devices
+                widget: select
+                options: [all, mobile, desktop]
+                default: all
+              - { name: code, label: "HTML / script code", widget: text, hint: "Paste the full snippet including <script> tags. Each ad slot needs a unique div id." }
+          - name: categories
+            label: "Navigation categories"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: slug, label: Slug, widget: string }
+          - name: footerLinks
+            label: "Footer links"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: url, label: URL, widget: string }
+          - { name: adsTxt, label: "ads.txt content (Google pub line)", widget: text }
+          - { name: disclosureText, label: "Article disclosure text", widget: text }
+
+  # ── Articles ─────────────────────────────────────────────────────────
+  - name: articles
+    label: "Articles"
+    folder: src/articles
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: layout, label: Layout, widget: hidden, default: article.njk }
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: "Meta description", widget: text }
+      - { name: category, label: Category, widget: string }
+      - { name: categorySlug, label: "Category slug", widget: string }
+      - { name: permalink, label: "Permalink (permanent URL)", widget: string, hint: "e.g. /mortgage/my-article/ — never change after publishing" }
+      - { name: datePublished, label: "Date published", widget: string, hint: "YYYY-MM-DD" }
+      - { name: dateModified, label: "Date modified", widget: string, required: false, hint: "YYYY-MM-DD" }
+      - { name: standfirst, label: Standfirst, widget: text }
+      - name: author
+        label: Author
+        widget: object
+        fields:
+          - { name: name, label: Name, widget: string }
+          - { name: slug, label: Slug, widget: string }
+          - { name: initials, label: Initials, widget: string }
+          - { name: jobTitle, label: "Job title", widget: string }
+          - { name: bio, label: Bio, widget: text }
+      - name: keyFigures
+        label: "Key figures band"
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: value, label: Value, widget: string }
+          - { name: note, label: Note, widget: string }
+      - { name: keyFiguresAsOf, label: "Figures as-of date", widget: string, required: false, hint: "YYYY-MM-DD" }
+      - name: toc
+        label: "Table of contents"
+        widget: list
+        required: false
+        fields:
+          - { name: id, label: "Heading id", widget: string }
+          - { name: label, label: Label, widget: string }
+      - name: faq
+        label: "FAQ (renders on page AND in schema)"
+        widget: list
+        required: false
+        fields:
+          - { name: q, label: Question, widget: string }
+          - { name: a, label: Answer, widget: text }
+      - name: related
+        label: "Related articles"
+        widget: list
+        required: false
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: url, label: URL, widget: string }
+          - { name: category, label: Category, widget: string }
+      - { name: body, label: "Article body (Markdown)", widget: markdown }
+
+  # ── Static / policy pages ───────────────────────────────────────────
+  - name: pages
+    label: "Policy Pages"
+    folder: src/pages
+    create: true
+    fields:
+      - { name: layout, label: Layout, widget: hidden, default: page.njk }
+      - { name: title, label: Title, widget: string }
+      - { name: permalink, label: Permalink, widget: string }
+      - { name: description, label: "Meta description", widget: text }
+      - { name: noAds, label: "Exclude ad/analytics scripts", widget: boolean, default: true }
+      - { name: updated, label: "Last updated", widget: string, required: false, hint: "YYYY-MM-DD" }
+      - { name: body, label: "Page body (Markdown)", widget: markdown }

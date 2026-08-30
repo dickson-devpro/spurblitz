@@ -1,0 +1,106 @@
+{
+  "name": "Spurblitz Hire",
+  "url": "https://hire.spurblitz.com",
+  "tagline": "Hiring international staff, explained for employers",
+  "logoHtml": "Spurblitz <em>Hire</em>",
+  "logoUrl": "https://hire.spurblitz.com/assets/logo.png",
+  "year": "2026",
+  "categories": [
+    {
+      "name": "Sponsor Licence",
+      "slug": "sponsor-licence",
+      "description": "Applying for and keeping a UK sponsor licence — requirements, documents, fees, timelines and refusals."
+    },
+    {
+      "name": "Hiring Internationally",
+      "slug": "hiring",
+      "description": "Recruiting and onboarding overseas staff — where to advertise, screening candidates, and what the process costs."
+    },
+    {
+      "name": "Visa Routes",
+      "slug": "visa-routes",
+      "description": "The work visa routes employers actually use, and which roles qualify for each."
+    },
+    {
+      "name": "Costs & Compliance",
+      "slug": "compliance",
+      "description": "What sponsorship costs in full, plus reporting duties, right to work checks and audit readiness."
+    },
+    {
+      "name": "Legal Support",
+      "slug": "legal",
+      "description": "When to bring in an immigration solicitor, what they charge, and how to choose one."
+    }
+  ],
+  "footerLinks": [
+    {
+      "name": "Privacy Policy",
+      "url": "/privacy/"
+    },
+    {
+      "name": "Terms & Conditions",
+      "url": "/terms/"
+    },
+    {
+      "name": "About Us",
+      "url": "/about/"
+    },
+    {
+      "name": "Contact",
+      "url": "/contact/"
+    }
+  ],
+  "disclosureText": "This guide is general information for employers, not legal advice. Immigration rules, fees and salary thresholds change frequently and apply differently to each business. Verify current requirements on the relevant government source and take advice from a qualified immigration solicitor or OISC-regulated adviser before acting.",
+  "adsTxt": "# Add your ad network line, e.g.\n# google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0",
+  "adBlocks": [
+    {
+      "name": "1. Analytics & site tags",
+      "enabled": false,
+      "position": "head",
+      "pages": "all",
+      "devices": "all",
+      "code": "<!-- Google tag, Search Console, Meta Pixel -->"
+    },
+    {
+      "name": "2. Ad network library",
+      "enabled": false,
+      "position": "head",
+      "pages": "article",
+      "devices": "all",
+      "code": "<!-- GPT loader + init, articles only -->"
+    },
+    {
+      "name": "3. Display — above title",
+      "enabled": false,
+      "position": "before-title",
+      "pages": "article",
+      "devices": "all",
+      "code": "<!-- top display unit -->"
+    },
+    {
+      "name": "4. Display — after title",
+      "enabled": false,
+      "position": "after-title",
+      "pages": "article",
+      "devices": "all",
+      "code": "<!-- renders flush under the headline -->"
+    },
+    {
+      "name": "5. Display — mid article",
+      "enabled": false,
+      "position": "after-paragraph",
+      "paragraph": 6,
+      "pages": "article",
+      "devices": "all",
+      "code": "<!-- after paragraph 6 -->"
+    },
+    {
+      "name": "6. Footer scripts",
+      "enabled": false,
+      "position": "footer",
+      "pages": "article",
+      "devices": "all",
+      "code": "<!-- anchor / rewarded gate -->"
+    }
+  ]
+}

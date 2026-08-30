@@ -1,0 +1,44 @@
+---
+layout: base.njk
+pagination:
+  data: site.categories
+  size: 1
+  alias: cat
+permalink: "/{{ cat.slug }}/"
+pageType: category
+eleventyComputed:
+  title: "{{ cat.name }}"
+  description: "{{ cat.description }}"
+---
+<div class="home-hero">
+  <div class="home-hero-inner">
+    <span class="kicker">Topic</span>
+    <h1>{{ cat.name }}</h1>
+    <p>{{ cat.description }}</p>
+  </div>
+</div>
+
+<div class="page page--single">
+<main class="home">
+  <ul class="job-list" style="margin-top:22px">
+    {% for post in collections.articles %}{% if post.data.categorySlug == cat.slug %}
+    <li><a href="{{ post.url }}">
+      <span class="jl-main">
+        <span class="jl-cat">{{ post.data.category }}</span>
+        <span class="jl-title">{{ post.data.title }}</span>
+      </span>
+    </a></li>
+    {% endif %}{% endfor %}
+  </ul>
+
+  <div class="section-head"><h2>Other topics</h2></div>
+  <div class="cat-grid">
+    {% for c in site.categories %}{% if c.slug != cat.slug %}
+    <a class="cat-card" href="/{{ c.slug }}/">
+      <span class="cat-name">{{ c.name }}</span>
+      <span class="cat-desc">{{ c.description }}</span>
+    </a>
+    {% endif %}{% endfor %}
+  </div>
+</main>
+</div>

@@ -1,0 +1,50 @@
+---
+layout: base.njk
+title: Home
+permalink: /
+pageType: home
+---
+{% set posts = collections.articles %}
+<div class="home-hero">
+  <div class="home-hero-inner">
+    <span class="kicker">For employers &amp; HR teams</span>
+    <h1>{{ site.tagline | safe }}</h1>
+    <p>Plain guides to sponsor licences, work visa routes, compliance duties and what hiring overseas staff actually costs — written for the people doing the hiring.</p>
+    <div class="dest-strip">
+      {% for cat in site.categories %}
+      {% set count = 0 %}{%- for p in posts -%}{% if p.data.categorySlug == cat.slug %}{% set count = count + 1 %}{% endif %}{%- endfor -%}
+      <a class="dest-tile" href="/{{ cat.slug }}/">
+        <span class="dn">{{ cat.name }}</span>
+        <span class="dc">{{ count }} guide{% if count != 1 %}s{% endif %}</span>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="page page--single">
+<main class="home">
+  <div class="section-head"><h2>Latest guides</h2></div>
+  <ul class="job-list">
+    {% for post in posts %}{% if loop.index <= 20 %}
+    <li><a href="{{ post.url }}">
+      <span class="jl-main">
+        <span class="jl-cat">{{ post.data.category }}</span>
+        <span class="jl-title">{{ post.data.title }}</span>
+      </span>
+    </a></li>
+    {% endif %}{% endfor %}
+  </ul>
+
+  <div class="section-head"><h2>Browse by topic</h2></div>
+  <div class="cat-grid">
+    {% for cat in site.categories %}
+    {% set count = 0 %}{%- for p in posts -%}{% if p.data.categorySlug == cat.slug %}{% set count = count + 1 %}{% endif %}{%- endfor -%}
+    <a class="cat-card" href="/{{ cat.slug }}/">
+      <span class="cat-name">{{ cat.name }} <span class="cat-count">{{ count }}</span></span>
+      <span class="cat-desc">{{ cat.description }}</span>
+    </a>
+    {% endfor %}
+  </div>
+</main>
+</div>

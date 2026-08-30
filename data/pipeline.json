@@ -1,0 +1,79 @@
+{
+  "model": "claude-sonnet-4-6",
+  "minWords": 2200,
+  "maxNewArticlesPerRun": 1,
+  "maxRefreshesPerRun": 1,
+  "refreshAfterDays": 4,
+  "author": {
+    "name": "R. Mensah",
+    "slug": "r-mensah",
+    "initials": "RM",
+    "jobTitle": "Editor",
+    "bio": "Writes for employers hiring overseas staff — sponsor licences, work visa routes, compliance duties and recruitment costs. Guides are checked against current Home Office and agency guidance and refreshed when rules change."
+  },
+  "clusters": [
+    {
+      "category": "Sponsor Licence",
+      "categorySlug": "sponsor-licence",
+      "keywords": [
+        "how to apply for a UK skilled worker sponsor licence",
+        "sponsor licence application documents checklist",
+        "how long a sponsor licence application takes",
+        "why sponsor licence applications get refused",
+        "sponsor licence renewal and reporting changes",
+        "small business guide to getting a sponsor licence",
+        "sponsor licence application step by step for HR",
+        "what a sponsor licence lets you do once approved"
+      ]
+    },
+    {
+      "category": "Hiring Internationally",
+      "categorySlug": "hiring",
+      "keywords": [
+        "how to hire foreign workers legally",
+        "where to post jobs to reach international candidates",
+        "writing job postings that attract overseas applicants",
+        "screening international job candidates fairly",
+        "how to onboard an employee relocating from abroad",
+        "recruiting software engineers internationally",
+        "international employment contracts what to include",
+        "staff hiring costs when recruiting from overseas"
+      ]
+    },
+    {
+      "category": "Visa Routes",
+      "categorySlug": "visa-routes",
+      "keywords": [
+        "UK skilled worker visa route explained for employers",
+        "H visa types explained for US employers",
+        "Germany work visa routes for employers",
+        "which roles qualify for visa sponsorship",
+        "permit to work application process explained",
+        "sponsoring an employee for a work visa step by step"
+      ]
+    },
+    {
+      "category": "Costs & Compliance",
+      "categorySlug": "compliance",
+      "keywords": [
+        "full cost of UK visa sponsorship for employers",
+        "Immigration Skills Charge explained",
+        "Certificate of Sponsorship explained for employers",
+        "sponsor licence compliance duties after approval",
+        "right to work checks for sponsored employees",
+        "preparing for a Home Office compliance visit",
+        "work visa health insurance obligations for employers"
+      ]
+    },
+    {
+      "category": "Legal Support",
+      "categorySlug": "legal",
+      "keywords": [
+        "when an employer needs an immigration solicitor",
+        "what immigration lawyers charge employers",
+        "how to choose a corporate immigration adviser",
+        "EB-2 NIW petitions what employers should know"
+      ]
+    }
+  ]
+}

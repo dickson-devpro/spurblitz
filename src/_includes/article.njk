@@ -1,0 +1,111 @@
+{% import "partials/adblocks.njk" as ads %}
+{% extends "base.njk" %}
+
+{% block schema %}{% include "partials/schema.njk" %}{% endblock %}
+
+{% block bodyclass %} class="single single-post"{% endblock %}
+
+{% block content %}
+<nav class="crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a><span aria-hidden="true">/</span><a href="/{{ categorySlug }}/">{{ category }}</a><span aria-hidden="true">/</span>{{ title }}
+</nav>
+
+<div class="page">
+<main class="article-col">
+  <article>
+    {{ ads.render(site.adBlocks, "before-title", pageType, noAds) }}
+    <span class="eyebrow">{{ category }}</span>
+    <h1>{{ title }}</h1>
+
+    {{ ads.render(site.adBlocks, "after-title", pageType, noAds) }}
+
+    <p class="standfirst">{{ standfirst }}</p>
+
+    <div class="byline">
+      <span class="avatar" aria-hidden="true">{{ author.initials }}</span>
+      <span>By <b>{{ author.name }}</b>, {{ author.jobTitle }} ·
+        Published <time datetime="{{ datePublished }}">{{ datePublished | readableDate }}</time>
+        {% if dateModified %} · Updated <time datetime="{{ dateModified }}">{{ dateModified | readableDate }}</time>{% endif %}
+      </span>
+      <span class="read-time">{{ content | readingTime }} min read</span>
+    </div>
+
+    {% if keyFigures %}
+    <section class="key-figures" aria-label="Key figures">
+      {% for f in keyFigures %}
+      <div>
+        <span class="kf-label">{{ f.label }}</span>
+        <span class="kf-value">{{ f.value }}</span>
+        <span class="kf-note">{{ f.note }}</span>
+      </div>
+      {% endfor %}
+      <span class="kf-asof">Figures refreshed {{ keyFiguresAsOf | readableDate }}</span>
+    </section>
+    {% endif %}
+
+    {{ ads.render(site.adBlocks, "before-content", pageType, noAds) }}
+
+    {% if toc %}
+    <nav class="toc" aria-label="Table of contents">
+      <h2>In this guide</h2>
+      <ol>{% for t in toc %}<li><a href="#{{ t.id }}">{{ t.label }}</a></li>{% endfor %}</ol>
+    </nav>
+    {% endif %}
+
+    <div class="article-body">
+      {{ content | injectAds(site.adBlocks, pageType) | safe }}
+    </div>
+
+    {{ ads.render(site.adBlocks, "end-of-article", pageType, noAds) }}
+
+    {% if faq and faq.length %}
+    <h2 id="faq" class="faq-heading">Frequently asked questions</h2>
+    <section class="faq">
+      {% for item in faq %}
+      <details>
+        <summary>{{ item.q }}</summary>
+        <p>{{ item.a }}</p>
+      </details>
+      {% endfor %}
+    </section>
+    {% endif %}
+
+    <div class="disclosure"><b>Disclosure:</b> {{ site.disclosureText }}</div>
+
+    <div class="author-box">
+      <span class="avatar" aria-hidden="true">{{ author.initials }}</span>
+      <div>
+        <h3>{{ author.name }} — {{ author.jobTitle }}</h3>
+        <p>{{ author.bio }}</p>
+      </div>
+    </div>
+
+    {% if related %}
+    <section class="related" aria-label="Related articles">
+      <h2>Related reading</h2>
+      <div class="related-grid">
+        {% for r in related %}
+        <a href="{{ r.url }}"><span class="cat">{{ r.category }}</span>{{ r.title }}</a>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
+  </article>
+</main>
+
+<aside class="rail">
+ <div class="rail-inner">
+  <div class="rail-block">
+    <h2>More in {{ category }}</h2>
+    <ul>
+      {% for post in collections.articles %}
+        {% if post.data.categorySlug == categorySlug and post.url != page.url %}
+        <li><a href="{{ post.url }}"><span class="cat">{{ post.data.category }}</span>{{ post.data.title }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+ </div>
+</aside>
+</div>
+{% endblock %}

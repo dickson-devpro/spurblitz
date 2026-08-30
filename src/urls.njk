@@ -1,0 +1,6 @@
+---
+permalink: /urls.txt
+eleventyExcludeFromCollections: true
+---
+{% for post in collections.articles %}{{ site.url }}{{ post.url }}
+{% endfor %}

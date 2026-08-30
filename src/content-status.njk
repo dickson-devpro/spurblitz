@@ -1,0 +1,41 @@
+---
+layout: base.njk
+permalink: /status/
+title: Content Status
+description: "Internal pipeline dashboard — keyword coverage by category."
+noAds: true
+pageType: status
+eleventyExcludeFromCollections: true
+---
+{% set report = pipeline.clusters | keywordStatus(collections.articles) %}
+<div class="page page--single">
+<main class="home">
+  <section class="home-featured">
+    <span class="eyebrow">Internal</span>
+    <h1>Content pipeline status</h1>
+    <p class="standfirst">
+      {{ collections.articles.length }} articles published ·
+      {% set done = 0 %}{% set total = 0 %}
+      {%- for c in report %}{% set done = done + c.done %}{% set total = total + c.total %}{% endfor -%}
+      {{ done }} of {{ total }} mapped keywords covered · {{ total - done }} queued.
+      The discovery agent tops the map up automatically when fewer than 8 remain.
+    </p>
+  </section>
+
+  {% for c in report %}
+  <section class="home-latest">
+    <h2>{{ c.category }} — {{ c.done }}/{{ c.total }} done</h2>
+    <div class="article-body">
+      <ul>
+        {% for k in c.keywords %}
+        <li>
+          {% if k.covered %}✅ <strong>{{ k.keyword }}</strong> — <a href="{{ k.url }}">{{ k.title }}</a>
+          {% else %}⬜ {{ k.keyword }} <em>(queued)</em>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endfor %}
+</main>
+</div>

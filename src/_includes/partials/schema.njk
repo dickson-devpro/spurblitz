@@ -1,0 +1,93 @@
+{#
+  schema.njk — builds the connected JSON-LD graph for every article page.
+  Data sources:
+    site.*   → _data/site.json  (url, name, logoUrl, author defaults)
+    page/article front-matter   → title, description, category, categorySlug,
+                                  datePublished, dateModified, cover, faq[], howto{}
+  Rules enforced here:
+    • FAQPage only renders when front-matter `faq` exists — and the article
+      template renders the same list visibly. Schema never exceeds visible content.
+    • HowTo only renders when `howto` exists (steps must be visible on page).
+    • Organization / Person / WebSite are @id-referenced, defined once per page.
+#}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#org",
+      "name": "{{ site.name }}",
+      "url": "{{ site.url }}/",
+      "logo": { "@type": "ImageObject", "url": "{{ site.logoUrl }}", "width": 512, "height": 512 },
+      "sameAs": {{ site.sameAs | default([]) | dump | safe }}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "{{ site.name }}",
+      "publisher": { "@id": "{{ site.url }}/#org" }
+    },
+    {
+      "@type": "Person",
+      "@id": "{{ site.url }}/authors/{{ author.slug }}/#person",
+      "name": "{{ author.name }}",
+      "url": "{{ site.url }}/authors/{{ author.slug }}/",
+      "jobTitle": "{{ author.jobTitle }}",
+      "worksFor": { "@id": "{{ site.url }}/#org" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ site.url }}{{ page.url }}#breadcrumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+        { "@type": "ListItem", "position": 2, "name": "{{ category }}", "item": "{{ site.url }}/{{ categorySlug }}/" },
+        { "@type": "ListItem", "position": 3, "name": "{{ title }}" }
+      ]
+    },
+    {
+      "@type": "Article",
+      "@id": "{{ site.url }}{{ page.url }}#article",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "mainEntityOfPage": "{{ site.url }}{{ page.url }}",
+      "headline": {{ title | dump | safe }},
+      "description": {{ description | dump | safe }},
+      "articleSection": "{{ category }}",
+      "author": { "@id": "{{ site.url }}/authors/{{ author.slug }}/#person" },
+      "publisher": { "@id": "{{ site.url }}/#org" },
+      "datePublished": "{{ datePublished }}",
+      "dateModified": "{{ dateModified or datePublished }}"{% if cover %},
+      "image": "{{ site.url }}{{ cover }}"{% endif %}
+    }{% if faq and faq.length %},
+    {
+      "@type": "FAQPage",
+      "@id": "{{ site.url }}{{ page.url }}#faq",
+      "mainEntity": [
+        {% for item in faq %}
+        {
+          "@type": "Question",
+          "name": {{ item.q | dump | safe }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ item.a | dump | safe }} }
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }{% endif %}{% if howto %},
+    {
+      "@type": "HowTo",
+      "@id": "{{ site.url }}{{ page.url }}#howto",
+      "name": {{ howto.name | dump | safe }},
+      "step": [
+        {% for step in howto.steps %}
+        {
+          "@type": "HowToStep",
+          "position": {{ loop.index }},
+          "name": {{ step.name | dump | safe }},
+          "text": {{ step.text | dump | safe }}
+        }{% if not loop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
