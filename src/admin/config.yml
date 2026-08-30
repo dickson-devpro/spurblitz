@@ -1,7 +1,7 @@
 # Sveltia CMS configuration — token-based sign-in (no OAuth worker)
 backend:
   name: github
-  repo: dickson-devpro/abroad.thebureaunews.com
+  repo: dickson-devpro/spurblitz
   branch: main
 
 media_folder: src/assets/uploads
@@ -138,18 +138,20 @@ collections:
     label: "Landing pages"
     label_singular: "Landing page"
     folder: "src/landers"
-    extension: html
-    format: yaml-frontmatter
+    extension: "html"
+    format: "yaml-frontmatter"
     create: true
     slug: "{{slug}}"
-    summary: "{{title}}  →  /{{slug}}/"
     fields:
-      - { name: title, label: "Name", widget: string, hint: "For your reference only — the page title comes from your HTML" }
-      - { name: slug, label: "URL slug", widget: string, hint: "jobs  →  /jobs/  (letters, numbers and hyphens only)", pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+      - name: title
+        label: "Name"
+        widget: "string"
+        hint: "For your reference only"
+      - name: slug
+        label: "URL slug"
+        widget: "string"
+        hint: "jobs gives /jobs/ — lowercase letters, numbers and hyphens only"
       - name: body
         label: "Full HTML document"
-        widget: code
-        default_language: html
-        allow_language_selection: false
-        output_code_only: true
-        hint: "Paste the COMPLETE page, from <!DOCTYPE html> to </html>. No blog CSS, ad code or gate runs here — add your own pixel and styles inside."
+        widget: "text"
+        hint: "Paste the COMPLETE page from <!DOCTYPE html> to </html>. No blog CSS, ad code or gate runs here."
