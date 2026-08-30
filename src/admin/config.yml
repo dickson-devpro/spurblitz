@@ -1,7 +1,7 @@
 # Sveltia CMS configuration — token-based sign-in (no OAuth worker)
 backend:
   name: github
-  repo: dickson-devpro/spurblitz
+  repo: dickson-devpro/abroad.thebureaunews.com
   branch: main
 
 media_folder: src/assets/uploads
@@ -132,3 +132,24 @@ collections:
       - { name: noAds, label: "Exclude ad/analytics scripts", widget: boolean, default: true }
       - { name: updated, label: "Last updated", widget: string, required: false, hint: "YYYY-MM-DD" }
       - { name: body, label: "Page body (Markdown)", widget: markdown }
+
+  # ── Landing pages: standalone HTML, isolated from the blog ──────────
+  - name: landers
+    label: "Landing pages"
+    label_singular: "Landing page"
+    folder: "src/landers"
+    extension: html
+    format: yaml-frontmatter
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}  →  /{{slug}}/"
+    fields:
+      - { name: title, label: "Name", widget: string, hint: "For your reference only — the page title comes from your HTML" }
+      - { name: slug, label: "URL slug", widget: string, hint: "jobs  →  /jobs/  (letters, numbers and hyphens only)", pattern: ['^[a-z0-9-]+$', 'Lowercase letters, numbers and hyphens only'] }
+      - name: body
+        label: "Full HTML document"
+        widget: code
+        default_language: html
+        allow_language_selection: false
+        output_code_only: true
+        hint: "Paste the COMPLETE page, from <!DOCTYPE html> to </html>. No blog CSS, ad code or gate runs here — add your own pixel and styles inside."
