@@ -204,39 +204,8 @@ body{font-family:Arial,Helvetica,sans-serif;background:#f4f7f4;color:var(--ink);
   */
 
   const applicationLinks = [
- "https://hire.spurblitz.com/certificate-of-sponsorship-explained-employers/",
-"https://hire.spurblitz.com/eb-2-niw-petitions-what-employers-should-know/",
-"https://hire.spurblitz.com/full-cost-uk-visa-sponsorship-employers/",
-"https://hire.spurblitz.com/germany-work-visa-routes-employers/",
-"https://hire.spurblitz.com/h-visa-types-explained-us-employers/",
-"https://hire.spurblitz.com/how-long-does-sponsor-licence-application-take/",
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence/",
-"https://hire.spurblitz.com/how-to-choose-corporate-immigration-adviser/",
-"https://hire.spurblitz.com/how-to-hire-foreign-workers-legally/",
-"https://hire.spurblitz.com/how-to-onboard-employee-relocating-from-abroad/",
-"https://hire.spurblitz.com/immigration-skills-charge-explained/",
-"https://hire.spurblitz.com/international-employment-contracts-what-to-include/",
-"https://hire.spurblitz.com/permit-to-work-application-process-explained/",
-"https://hire.spurblitz.com/preparing-home-office-compliance-visit/",
-"https://hire.spurblitz.com/recruiting-software-engineers-internationally/",
-"https://hire.spurblitz.com/right-to-work-checks-sponsored-employees/",
-"https://hire.spurblitz.com/screening-international-job-candidates-fairly/",
-"https://hire.spurblitz.com/small-business-guide-getting-sponsor-licence/",
-"https://hire.spurblitz.com/sponsor-licence-application-documents-checklist/",
-"https://hire.spurblitz.com/sponsor-licence-application-step-by-step-hr/",
-"https://hire.spurblitz.com/sponsor-licence-compliance-duties-after-approval/",
-"https://hire.spurblitz.com/sponsor-licence-renewal-reporting-changes/",
-"https://hire.spurblitz.com/sponsoring-employee-work-visa-step-by-step/",
-"https://hire.spurblitz.com/staff-hiring-costs-recruiting-from-overseas/",
-"https://hire.spurblitz.com/uk-skilled-worker-visa-route-explained-employers/",
-"https://hire.spurblitz.com/what-immigration-lawyers-charge-employers/",
-"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved/",
-"https://hire.spurblitz.com/when-employer-needs-immigration-solicitor/",
-"https://hire.spurblitz.com/where-to-post-jobs-reach-international-candidates/",
-"https://hire.spurblitz.com/which-roles-qualify-for-visa-sponsorship/",
-"https://hire.spurblitz.com/why-sponsor-licence-applications-get-refused/",
-"https://hire.spurblitz.com/work-visa-health-insurance-obligations-employers/",
-"https://hire.spurblitz.com/writing-job-postings-attract-overseas-applicants/"
+ "https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+ "https://hire.spurblitz.com/how-to-choose-corporate-immigration-adviser"
   ];
 
 
