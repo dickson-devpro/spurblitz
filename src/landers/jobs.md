@@ -60,9 +60,12 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
   <button id="go" class="cta" type="button" disabled>Apply now</button>
 </main>
 <script>
-var b=document.getElementById('go'),u='https://careers.clamlandia.com/85k-farm-assistant-job-in-new-zealandpoultry-egg-production-2026-guide/';
+var urls=[
+ 'https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence/'
+];
+var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
-b.onclick=function(){location.href=u};
+b.onclick=function(){window.open(urls[Math.floor(Math.random()*urls.length)],'_blank','noopener')};
 </script>
 </body>
 </html>
