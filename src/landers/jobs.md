@@ -61,7 +61,22 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
- 'https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence/'
+"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved",
+"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved",
+"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved",
+"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/sponsoring-employee-work-visa-step-by-step",
+"https://hire.spurblitz.com/why-sponsor-licence-applications-get-refused",
+"https://hire.spurblitz.com/screening-international-job-candidates-fairly/",
+"https://hire.spurblitz.com/screening-international-job-candidates-fairly",
+"https://hire.spurblitz.com/sponsor-licence-application-documents-checklist",
+"https://hire.spurblitz.com/how-to-onboard-employee-relocating-from-abroad",
+"https://hire.spurblitz.com/h-visa-types-explained-us-employers",
+"https://hire.spurblitz.com/what-sponsor-licence-lets-you-do-once-approved/"
 ];
 var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
