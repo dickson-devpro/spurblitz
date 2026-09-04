@@ -61,15 +61,6 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
-"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
-"https://hire.spurblitz.com/how-to-hire-foreign-workers-legally",
-"https://hire.spurblitz.com/small-business-guide-getting-sponsor-licence",
-"https://hire.spurblitz.com/how-to-choose-corporate-immigration-adviser/",
-"https://hire.spurblitz.com/where-to-post-jobs-reach-international-candidates/",
 "https://hire.spurblitz.com/how-to-hire-foreign-workers-legally/"
 ];
 var b=document.getElementById('go');
