@@ -61,7 +61,17 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
-"https://hire.spurblitz.com/how-to-hire-foreign-workers-legally/"
+"https://hire.spurblitz.com/how-to-hire-foreign-workers-legally",
+"https://hire.spurblitz.com/how-to-hire-foreign-workers-legally",
+"https://hire.spurblitz.com/small-business-guide-getting-sponsor-licence",
+"https://hire.spurblitz.com/small-business-guide-getting-sponsor-licence",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence",
+"https://hire.spurblitz.com/what-immigration-lawyers-charge-employers",
+"https://hire.spurblitz.com/immigration-skills-charge-explained/",
+"https://hire.spurblitz.com/what-immigration-lawyers-charge-employers/",
+"https://hire.spurblitz.com/sponsor-licence-compliance-duties-after-approval/",
+"https://hire.spurblitz.com/where-to-post-jobs-reach-international-candidates"
 ];
 var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
