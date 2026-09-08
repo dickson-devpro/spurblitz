@@ -2,9 +2,11 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{%- set seen = [] -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>{{ site.url }}/</loc></url>
-{% for cat in site.categories %}  <url><loc>{{ site.url }}/{{ cat.slug }}/</loc></url>
-{% endfor %}{% for post in collections.articles %}  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.data.dateModified or post.data.datePublished }}</lastmod></url>
-{% endfor %}</urlset>
+  <url><loc>{{ site.url }}/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
+{% for cat in site.categories %}{% if cat.slug not in seen %}{% set seen = (seen.push(cat.slug), seen) %}  <url><loc>{{ site.url }}/{{ cat.slug }}/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+{% endif %}{% endfor %}{% for post in collections.articles %}  <url><loc>{{ site.url }}{{ post.url }}</loc><lastmod>{{ post.data.dateModified or post.data.datePublished }}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+{% endfor %}{% for p in collections.pages %}{% if not p.data.noindex %}  <url><loc>{{ site.url }}{{ p.url }}</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+{% endif %}{% endfor %}</urlset>

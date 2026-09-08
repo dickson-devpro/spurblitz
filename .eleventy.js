@@ -97,6 +97,11 @@ module.exports = function (eleventyConfig) {
   });
 
   // All articles, newest first
+  // Policy pages, so the sitemap can include them
+  eleventyConfig.addCollection("pages", (api) =>
+    api.getFilteredByGlob("src/pages/*.md")
+  );
+
   eleventyConfig.addCollection("articles", (api) =>
     api.getFilteredByGlob("src/articles/*.md").sort(
       (a, b) => new Date(b.data.datePublished) - new Date(a.data.datePublished)

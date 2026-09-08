@@ -1,7 +1,7 @@
 # Sveltia CMS configuration — token-based sign-in (no OAuth worker)
 backend:
   name: github
-  repo: dickson-devpro/spurblitz
+  repo: dickson-devpro/abroad.thebureaunews.com
   branch: main
 
 media_folder: src/assets/uploads
@@ -58,6 +58,8 @@ collections:
             fields:
               - { name: name, label: Name, widget: string }
               - { name: url, label: URL, widget: string }
+          - { name: googleSiteVerification, label: "Google Search Console verification code", widget: string, required: false, hint: "Only the content value from Google's HTML tag method — not the whole tag" }
+          - { name: ogImage, label: "Default social share image URL", widget: string, required: false, hint: "Full https URL to a 1200x630 image used when pages are shared" }
           - { name: adsTxt, label: "ads.txt content (Google pub line)", widget: text }
           - { name: disclosureText, label: "Article disclosure text", widget: text }
 
@@ -132,26 +134,3 @@ collections:
       - { name: noAds, label: "Exclude ad/analytics scripts", widget: boolean, default: true }
       - { name: updated, label: "Last updated", widget: string, required: false, hint: "YYYY-MM-DD" }
       - { name: body, label: "Page body (Markdown)", widget: markdown }
-
-  # ── Landing pages: standalone HTML, isolated from the blog ──────────
-  - name: landers
-    label: "Landing pages"
-    label_singular: "Landing page"
-    folder: "src/landers"
-    extension: "md"
-    format: "yaml-frontmatter"
-    create: true
-    slug: "{{slug}}"
-    fields:
-      - name: title
-        label: "Name"
-        widget: "string"
-        hint: "For your reference only"
-      - name: slug
-        label: "URL slug"
-        widget: "string"
-        hint: "jobs gives /jobs/ — lowercase letters, numbers and hyphens only"
-      - name: body
-        label: "Full HTML document"
-        widget: "text"
-        hint: "Paste the COMPLETE page from <!DOCTYPE html> to </html>. No blog CSS, ad code or gate runs here."

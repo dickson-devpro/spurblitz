@@ -5,10 +5,36 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 {{ ads.render(site.adBlocks, "head", pageType, noAds) }}
-<title>{{ title }} | {{ site.name }}</title>
-<meta name="description" content="{{ description }}">
-<link rel="canonical" href="{{ site.url }}{{ page.url }}">
-{% if noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+{% set metaTitle = seoTitle or (title + " | " + site.name) %}
+{% set metaDesc = description or site.tagline %}
+{% set metaUrl = site.url + page.url %}
+{% set metaImage = ogImage or site.ogImage or site.logoUrl %}
+<title>{{ metaTitle }}</title>
+<meta name="description" content="{{ metaDesc }}">
+<link rel="canonical" href="{{ metaUrl }}">
+{% if noindex %}<meta name="robots" content="noindex, nofollow">{% else %}<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">{% endif %}
+{% if site.googleSiteVerification %}<meta name="google-site-verification" content="{{ site.googleSiteVerification }}">{% endif %}
+<meta name="theme-color" content="#3538cd">
+
+<!-- Open Graph -->
+<meta property="og:type" content="{% if pageType == 'article' %}article{% else %}website{% endif %}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ metaTitle }}">
+<meta property="og:description" content="{{ metaDesc }}">
+<meta property="og:url" content="{{ metaUrl }}">
+<meta property="og:locale" content="en_GB">
+{% if metaImage %}<meta property="og:image" content="{{ metaImage }}">
+<meta property="og:image:alt" content="{{ metaTitle }}">{% endif %}
+{% if pageType == 'article' %}<meta property="article:published_time" content="{{ datePublished }}">
+<meta property="article:modified_time" content="{{ dateModified or datePublished }}">
+<meta property="article:section" content="{{ category }}">
+{% if author %}<meta property="article:author" content="{{ author.name }}">{% endif %}{% endif %}
+
+<!-- Twitter -->
+<meta name="twitter:card" content="{% if metaImage %}summary_large_image{% else %}summary{% endif %}">
+<meta name="twitter:title" content="{{ metaTitle }}">
+<meta name="twitter:description" content="{{ metaDesc }}">
+{% if metaImage %}<meta name="twitter:image" content="{{ metaImage }}">{% endif %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
