@@ -61,16 +61,7 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
-"https://enter.biomuse.com.ng/form-5472-penalty-foreign-owned-llc/",
-"https://enter.biomuse.com.ng/care-support-roles-that-sponsor-overseas-workers/",
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed/",
-"https://enter.biomuse.com.ng/mortgage-insurance-pmi-explained/",
-"https://enter.biomuse.com.ng/first-time-buyer-mortgage-requirements-explained/",
-"https://enter.biomuse.com.ng/how-to-build-credit-file-from-nothing-new-country/",
-"https://enter.biomuse.com.ng/best-brokerage-accounts-non-resident-aliens/",
-"https://enter.biomuse.com.ng/how-to-compare-residency-routes-cost-timeline/",
-"https://enter.biomuse.com.ng/cost-of-living-comparison-before-you-accept-offer/",
-"https://enter.biomuse.com.ng/private-banks-high-net-worth-new-residents/"
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed"
 ];
 var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
