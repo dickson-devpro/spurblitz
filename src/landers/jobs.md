@@ -61,16 +61,7 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
-"https://enter.biomuse.com.ng/relocation-packages-what-employers-actually-cover/",
-"https://enter.biomuse.com.ng/tax-residency-explained-when-you-move-mid-year/",
-"https://enter.biomuse.com.ng/temporary-housing-london-costs-options-2026/",
-"https://enter.biomuse.com.ng/how-to-build-credit-file-from-nothing-new-country/",
-"https://enter.biomuse.com.ng/relocating-to-melbourne-tech-salary-2026/"
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed"
 ];
 var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
