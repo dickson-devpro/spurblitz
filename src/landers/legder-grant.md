@@ -1,6 +1,6 @@
 ---
 title: Legder Grant
-slug: grantoffer
+slug: grantoffer/
 ---
 
 <!-- Meta Pixel Code -->
