@@ -61,7 +61,18 @@ input:focus-visible+.opt{outline:3px solid #008751;outline-offset:3px}
 </main>
 <script>
 var urls=[
-"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed"
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/uk-investor-visa-alternatives-after-route-closed",
+"https://enter.biomuse.com.ng/germany-permanent-residency-requirements-skilled-workers",
+"https://enter.biomuse.com.ng/germany-permanent-residency-requirements-skilled-workers/",
+"https://enter.biomuse.com.ng/care-support-roles-that-sponsor-overseas-workers",
+"https://enter.biomuse.com.ng/form-5472-penalty-foreign-owned-llc",
+"https://enter.biomuse.com.ng/first-time-buyer-mortgage-requirements-explained/"
 ];
 var b=document.getElementById('go');
 document.querySelectorAll('input[name=q]').forEach(function(r){r.onchange=function(){b.disabled=false}});
