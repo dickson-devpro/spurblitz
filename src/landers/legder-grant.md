@@ -523,7 +523,8 @@ h1{
    * Replace these with your real URLs later.
    */
   const links = [
-    "https://jobs.ledgerbloc.com/best-brokerage-accounts-for-non-resident-aliens-in-the-usa"
+    "https://hire.spurblitz.com/how-to-hire-foreign-workers-legally/",
+"https://hire.spurblitz.com/how-to-apply-uk-skilled-worker-sponsor-licence/"
   ];
 
   let selectedAmount = null;
